@@ -47,10 +47,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         String getUserNameFromSharedPref = sharedPreferences.getString(SHARED_PREF_USERNAME_KEY, "");
-        if (sharedPreferences.contains(SHARED_PREF_USERNAME_KEY) && sharedPreferences.contains(SHARED_PREF_CHECKBOX_KEY)) {
+        if (sharedPreferences.contains(SHARED_PREF_USERNAME_KEY) ) {
             emailView.setText(getUserNameFromSharedPref);
-            usernameCheckbox.isChecked();
-
+        }
+        if(sharedPreferences.contains(SHARED_PREF_CHECKBOX_KEY)){
+            usernameCheckbox.setChecked(true);
         }
 
 
@@ -95,7 +96,8 @@ public class LoginActivity extends AppCompatActivity {
 
             if (isCheckBoxChecked) {
                 sharedPreferences
-                        .edit().putString(SHARED_PREF_USERNAME_KEY, userNameIntheStringsXML)
+                        .edit()
+                        .putString(SHARED_PREF_USERNAME_KEY, userNameIntheStringsXML)
                         .putBoolean(SHARED_PREF_CHECKBOX_KEY, true)
                         .apply();
             }

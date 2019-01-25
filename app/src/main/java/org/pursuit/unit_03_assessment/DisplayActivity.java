@@ -25,13 +25,14 @@ public class DisplayActivity extends AppCompatActivity {
         displayNameTextView = findViewById(R.id.display_name_textview);
         displayNumberTextView = findViewById(R.id.display_number_textview);
         planetImageView = findViewById(R.id.display_planet_imageview);
+
         int getNumber = intent.getIntExtra(PlanetViewHolder.PLANET_NUMBER, 0);
         String turnNumberToString = String.valueOf(getNumber);
         String getImageUrl = intent.getStringExtra(PlanetViewHolder.PLANET_IMAGE);
 
 
         displayNameTextView.setText(intent.getStringExtra(PlanetViewHolder.PLANET_NAME));
-        displayNumberTextView.setText(turnNumberToString);
+        displayNumberTextView.setText("Planet Number : " +turnNumberToString);
         Picasso.get().load(getImageUrl).into(planetImageView);
 
 
