@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -46,7 +48,12 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
+
         String getUserNameFromSharedPref = sharedPreferences.getString(SHARED_PREF_USERNAME_KEY, "");
+
+        /**
+         * The task was to check if username value AND checkbox value are in shared preferences then you would set the EditTextValues
+         */
         if (sharedPreferences.contains(SHARED_PREF_USERNAME_KEY) ) {
             emailView.setText(getUserNameFromSharedPref);
         }
@@ -94,6 +101,9 @@ public class LoginActivity extends AppCompatActivity {
             String passwordInTheStringsXML = getResources().getString(R.string.dummy_password);
             boolean isCheckBoxChecked = usernameCheckbox.isChecked();
 
+            /**
+             * When checkbox is ticked you should only be adding these values to shared prefrences if both the email/username and passwords match the edit text values
+             */
             if (isCheckBoxChecked) {
                 sharedPreferences
                         .edit()
@@ -104,8 +114,8 @@ public class LoginActivity extends AppCompatActivity {
             if (!isCheckBoxChecked) {
                 sharedPreferences.edit().clear().apply();
             }
-            if (email.equals(userNameIntheStringsXML) && password.equals(passwordInTheStringsXML)) {
 
+            if (email.equals(userNameIntheStringsXML) && password.equals(passwordInTheStringsXML)) {
                 Intent intent = new Intent(getApplicationContext(), RecyclerActivity.class);
                 startActivity(intent);
             }

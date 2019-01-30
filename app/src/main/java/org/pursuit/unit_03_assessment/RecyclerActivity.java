@@ -35,6 +35,9 @@ public class RecyclerActivity extends AppCompatActivity {
         planetOuterClassCall.enqueue(new Callback<PlanetOuterClass>() {
             @Override
             public void onResponse(Call<PlanetOuterClass> call, Response<PlanetOuterClass> response) {
+                /**
+                 * you should check if response.body() is null otherwise your app has a chance of crashing if it is and you gall .getPlanets
+                 */
                 List<Planet> planetList = response.body().getPlanets();
                 Log.d(TAG, "onResponse: "+ planetList);
                 PlanetAdapter planetAdapter = new PlanetAdapter(planetList);
@@ -47,7 +50,6 @@ public class RecyclerActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<PlanetOuterClass> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.getMessage());
-
             }
         });
 

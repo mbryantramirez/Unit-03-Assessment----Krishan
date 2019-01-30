@@ -28,6 +28,9 @@ public class PlanetAdapter extends RecyclerView.Adapter<PlanetViewHolder> {
         return new PlanetViewHolder(childView);
     }
 
+    /**
+     * you dont need to create a seperate instance of Planet here you can just pass planetList.get(i) into the onBind() method
+     */
     @Override
     public void onBindViewHolder(@NonNull PlanetViewHolder planetViewHolder, int i) {
         Planet planet = planetList.get(i);

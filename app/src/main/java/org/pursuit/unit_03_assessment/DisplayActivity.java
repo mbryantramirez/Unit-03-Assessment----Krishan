@@ -12,6 +12,10 @@ import org.pursuit.unit_03_assessment.R;
 import org.pursuit.unit_03_assessment.view.PlanetViewHolder;
 
 public class DisplayActivity extends AppCompatActivity {
+
+    /**
+     * You can make these views local variables instead since theyre not being used outside of your onCreate method
+     */
     private TextView displayNameTextView;
     private TextView displayNumberTextView;
     private ImageView planetImageView;
@@ -32,6 +36,9 @@ public class DisplayActivity extends AppCompatActivity {
 
 
         displayNameTextView.setText(intent.getStringExtra(PlanetViewHolder.PLANET_NAME));
+        /**
+         * avoid concatenating strings in the set text method this takes up resources
+         */
         displayNumberTextView.setText("Planet Number : " +turnNumberToString);
         Picasso.get().load(getImageUrl).into(planetImageView);
 

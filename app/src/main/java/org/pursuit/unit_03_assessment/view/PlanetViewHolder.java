@@ -13,6 +13,7 @@ import org.pursuit.unit_03_assessment.R;
 
 import org.pursuit.unit_03_assessment.model.Planet;
 
+
 public class PlanetViewHolder extends RecyclerView.ViewHolder {
     public static final String PLANET_NAME = "planet name" ;
     public  static final String PLANET_IMAGE = "planet image";
@@ -25,7 +26,6 @@ public class PlanetViewHolder extends RecyclerView.ViewHolder {
     }
     public void onBind(final Planet planet){
         planetTextView.setText(planet.getName());
-
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,13 +33,8 @@ public class PlanetViewHolder extends RecyclerView.ViewHolder {
                 intent.putExtra(PLANET_NAME, planet.getName());
                 intent.putExtra(PLANET_NUMBER, planet.getNumber());
                 intent.putExtra(PLANET_IMAGE, planet.getImage());
-
                 v.getContext().startActivity(intent);
-
             }
         });
-
-
-
     }
 }
